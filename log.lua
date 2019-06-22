@@ -4,7 +4,7 @@ function log_main()
     end
     if config_log_cc_check == "on" then
         local STATUS = ngx.status
-        log_record_status('log_main() check ',ngx.var.request_uri,"-","-",STATUS)
+        -- log_record_status('log_main() check ',ngx.var.request_uri,"-","-",STATUS)
         -- if STATUS == ngx.HTTP_NOT_FOUND || STATUS == ngx.HTTP_BAD_REQUEST || STATUS == ngx.HTTP_UNAUTHORIZED || STATUS == ngx.HTTP_NOT_ALLOWED then
         if (STATUS >= ngx.HTTP_NOT_FOUND and STATUS <
             ngx.HTTP_INTERNAL_SERVER_ERROR) then
