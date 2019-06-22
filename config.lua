@@ -1,6 +1,6 @@
 --WAF config file,enable = "on",disable = "off"
 
-package.path=package.path .. "/root/openresty-1.13.6.1/bundle/lua-resty-core-0.1.13/lib/resty/core.lua"
+package.path="/root/openresty-1.13.6.1/bundle/lua-resty-core-0.1.13/lib/resty/core.lua"
 
 --waf status
 config_waf_enable = "on"
