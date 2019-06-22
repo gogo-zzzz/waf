@@ -62,12 +62,12 @@ function cc_attack_check()
         local ATTACK_URI=ngx.var.uri
         local CC_TOKEN = get_client_ip()..ATTACK_URI
         local limit = ngx.shared.limit
-        local total, _ = ngx.shared.limit:llen(CC_TOKEN)
         CCcount=tonumber(string.match(config_cc_rate,'(.*)/'))
         CCseconds=tonumber(string.match(config_cc_rate,'/(.*)'))
         local req,_ = limit:get(CC_TOKEN)
         if req then
             if req > CCcount then
+                local total, _ = limit:llen(CC_TOKEN)
                 title = string.format( "CC_Attack total: %d", total)
                 log_record(title,ngx.var.request_uri,"-","-")
                 if config_waf_enable == "on" then
