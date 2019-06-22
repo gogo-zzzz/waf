@@ -76,7 +76,8 @@ function cc_attack_check()
                 if config_waf_enable == "on" then
                     ngx.ctx.is_cc = "true"
                     --ngx.exit(403)
-                    tcpsock:close()
+                    s, _ = ngx.req.socket(true)
+                    s.close()
                 end
             else
                 --limit:incr(CC_TOKEN,1)
