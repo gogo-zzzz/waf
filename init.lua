@@ -73,7 +73,8 @@ function cc_attack_check()
                 --local cap = limit:capacity()
                 local title = ''
                 for slot, s in ipairs(stats) do
-                    title += string.format("slot=%d, size=%d, total=%d, used=%d, reqs=%d, fails=%d", slot, s.size, s.total, s.used, s.reqs, s.fails))
+                    local temp = string.format("slot=%d, size=%d, total=%d, used=%d, reqs=%d, fails=%d", slot, s.size, s.total, s.used, s.reqs, s.fails))
+                    title = title .. temp
                 end
 
                 --title = string.format( "CC_Attack total: %d", total)
