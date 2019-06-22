@@ -1,5 +1,5 @@
 function log_main()
-    if ngx.is_cc == "true" then
+    if ngx.ctx.is_cc == "true" then
         return true
     end
     if config_log_cc_check == "on" then
