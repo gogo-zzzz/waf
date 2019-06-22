@@ -62,7 +62,7 @@ function cc_attack_check()
         local ATTACK_URI=ngx.var.uri
         local CC_TOKEN = get_client_ip()..ATTACK_URI
         local limit = ngx.shared.limit
-        local total = ngx.shared.limit:llen(CC_TOKEN)
+        local total, _ = ngx.shared.limit:llen(CC_TOKEN)
         CCcount=tonumber(string.match(config_cc_rate,'(.*)/'))
         CCseconds=tonumber(string.match(config_cc_rate,'/(.*)'))
         local req,_ = limit:get(CC_TOKEN)
