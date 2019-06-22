@@ -73,10 +73,10 @@ function cc_attack_check()
                     ngx.exit(403)
                 end
             else
-                limit:incr(CC_TOKEN,1)
+                --limit:incr(CC_TOKEN,1)
             end
         else
-            limit:set(CC_TOKEN,1,CCseconds)
+            --limit:set(CC_TOKEN,1,CCseconds)
         end
     end
     return false
