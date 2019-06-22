@@ -71,7 +71,12 @@ function cc_attack_check()
                 local total, _ = table.getn(limit)
                 --local free_space = limit:free_space()
                 --local cap = limit:capacity()
-                title = string.format( "CC_Attack total: %d", total)
+                local title = ''
+                for slot, s in ipairs(stats) do
+                    title += string.format("slot=%d, size=%d, total=%d, used=%d, reqs=%d, fails=%d", slot, s.size, s.total, s.used, s.reqs, s.fails))
+                end
+
+                --title = string.format( "CC_Attack total: %d", total)
                 log_record(title,ngx.var.request_uri,"-","-")
                 if config_waf_enable == "on" then
                     ngx.ctx.is_cc = "true"
