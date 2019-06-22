@@ -70,8 +70,8 @@ function cc_attack_check()
             if req > CCcount then
                 local total, _ = table.getn(limit)
                 --local free_space = limit:free_space()
-                local cap = limit:capacity()
-                title = string.format( "CC_Attack cap: %d, total: %d", free_space, total)
+                --local cap = limit:capacity()
+                title = string.format( "CC_Attack total: %d", total)
                 log_record(title,ngx.var.request_uri,"-","-")
                 if config_waf_enable == "on" then
                     ngx.ctx.is_cc = "true"
