@@ -1,7 +1,7 @@
 function log_main()
     if config_log_cc_check == "on" then
         local STATUS = ngx.status
-        log_record('log_main()',ngx.var.request_uri,"-","-",STATUS)
+        log_record_status('log_main() check ',ngx.var.request_uri,"-","-",STATUS)
         -- if STATUS == ngx.HTTP_NOT_FOUND || STATUS == ngx.HTTP_BAD_REQUEST || STATUS == ngx.HTTP_UNAUTHORIZED || STATUS == ngx.HTTP_NOT_ALLOWED then
         if (STATUS >= ngx.HTTP_NOT_FOUND and STATUS <
             ngx.HTTP_INTERNAL_SERVER_ERROR) then
@@ -13,7 +13,7 @@ function log_main()
             local req, _ = limit:get(CC_TOKEN)
             if req then
                 if req > CCcount then
-                    log_record('log CC_Attack', ngx.var.request_uri, "-", "-")
+                    log_record_status('log main 4xx attack', ngx.var.request_uri, "-", "-", STATUS)
                     if config_waf_enable == "on" then
                         ngx.exit(403)
                     end
