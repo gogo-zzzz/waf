@@ -72,9 +72,10 @@ function cc_attack_check()
                 --local free_space = limit:free_space()
                 --local cap = limit:capacity()
                 local title = ''
+                local stats = limit:get_stats()
                 for slot, s in ipairs(stats) do
                     local temp = string.format("slot=%d, size=%d, total=%d, used=%d, reqs=%d, fails=%d", slot, s.size, s.total, s.used, s.reqs, s.fails)
-                    title = title .. temp
+                    title = title..temp
                 end
 
                 --title = string.format( "CC_Attack total: %d", total)
