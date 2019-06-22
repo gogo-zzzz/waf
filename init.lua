@@ -1,6 +1,7 @@
 --WAF Action
 require 'config'
 require 'lib'
+require 'table'
 
 --args
 local rulematch = ngx.re.find
@@ -67,7 +68,7 @@ function cc_attack_check()
         local req,_ = limit:get(CC_TOKEN)
         if req then
             if req > CCcount then
-                local total, _ = getn(limit)
+                local total, _ = table.getn(limit)
                 --local free_space = limit:free_space()
                 local cap = limit:capacity()
                 title = string.format( "CC_Attack cap: %d, total: %d", free_space, total)
