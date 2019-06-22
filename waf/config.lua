@@ -43,3 +43,5 @@ config_output_html=[[
 </html>
 ]]
 
+-- check 400~404 in log_by_lua_file
+config_log_cc_check = "on"

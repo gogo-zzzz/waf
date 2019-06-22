@@ -129,6 +129,7 @@ HelloWorld
     lua_package_path "/usr/local/openresty/nginx/conf/waf/?.lua";
     init_by_lua_file "/usr/local/openresty/nginx/conf/waf/init.lua";
     access_by_lua_file "/usr/local/openresty/nginx/conf/waf/access.lua";
+    log_by_lua_file /usr/local/openresty/nginx/conf/waf/log.lua;
 
 [root@openstack-compute-node5 ~]# /usr/local/openresty/nginx/sbin/nginx –t
 [root@openstack-compute-node5 ~]# /usr/local/openresty/nginx/sbin/nginx
