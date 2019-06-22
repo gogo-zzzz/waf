@@ -67,8 +67,9 @@ function cc_attack_check()
         local req,_ = limit:get(CC_TOKEN)
         if req then
             if req > CCcount then
-                local total, _ = limit:llen(CC_TOKEN)
-                title = string.format( "CC_Attack total: %d", total)
+                local free_space = limit:free_space()
+                local cap = limit:capacity()
+                title = string.format( "CC_Attack cap: %d, free: %d", free_space, cap)
                 log_record(title,ngx.var.request_uri,"-","-")
                 if config_waf_enable == "on" then
                     ngx.ctx.is_cc = "true"
