@@ -2,7 +2,7 @@
 require 'config'
 require 'lib'
 require 'table'
-require 'resty.core'
+require 'resty.core.shdict'
 
 --args
 local rulematch = ngx.re.find
