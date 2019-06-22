@@ -69,6 +69,7 @@ function cc_attack_check()
             if req > CCcount then
                 log_record('CC_Attack',ngx.var.request_uri,"-","-")
                 if config_waf_enable == "on" then
+                    ngx.ctx.is_cc = "true"
                     ngx.exit(403)
                 end
             else

@@ -1,4 +1,7 @@
 function log_main()
+    if ngx.is_cc == "true" then
+        return true
+    end
     if config_log_cc_check == "on" then
         local STATUS = ngx.status
         log_record_status('log_main() check ',ngx.var.request_uri,"-","-",STATUS)
