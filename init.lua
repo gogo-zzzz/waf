@@ -2,6 +2,7 @@
 require 'config'
 require 'lib'
 require 'table'
+require 'resty.core'
 
 --args
 local rulematch = ngx.re.find
@@ -69,16 +70,9 @@ function cc_attack_check()
         if req then
             if req > CCcount then
                 local total, _ = table.getn(limit)
-                --local free_space = limit:free_space()
-                --local cap = limit:capacity()
-                local title = ''
-                local stats = limit:get_stats()
-                for slot, s in ipairs(stats) do
-                    local temp = string.format("slot=%d, size=%d, total=%d, used=%d, reqs=%d, fails=%d", slot, s.size, s.total, s.used, s.reqs, s.fails)
-                    title = title..temp
-                end
-
-                --title = string.format( "CC_Attack total: %d", total)
+                local free_space = limit:free_space()
+                local cap = limit:capacity()
+                title = string.format( "CC_Attack total: %d, free: %d, cap: %d", total, free_space, cap)
                 log_record(title,ngx.var.request_uri,"-","-")
                 if config_waf_enable == "on" then
                     ngx.ctx.is_cc = "true"
